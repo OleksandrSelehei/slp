@@ -1,0 +1,226 @@
+[
+  {
+    "name": "__cf_bm",
+    "value": "oz2rDinT2nYG.SR1sCpW5jCah06h7fD_GG5LCmH1.wM-1762800356-1.0.1.1-NU_jP6fHheaLHogq3jkD3Ev7KHpZCLghrGTw.gCIwMtAU6WdKsGw3ga8PgUOdfE6IeVbwcvu7U7NEi8NFl7Wunr6A_gr7vc0q72hDREBAWc",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": 1762802156.567773,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_cfuvid",
+    "value": "aoIUHbcMalZfA39X5IaVVs0gzrRVTUReJ_HjopbmiMw-1762800392264-0.0.1.1-604800000",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "currency_currency",
+    "value": "btc",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360406.898089,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "currency_hideZeroBalances",
+    "value": "false",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360406.898284,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "currency_currencyView",
+    "value": "crypto",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360406.898456,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "fiat_number_format",
+    "value": "en",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.632269,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cookie_consent",
+    "value": "false",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.632458,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "session_info",
+    "value": "undefined",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.632589,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "leftSidebarView_v2",
+    "value": "expanded",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.632715,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "sidebarView",
+    "value": "hidden",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.632841,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "oddsFormat",
+    "value": "decimal",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.666727,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "quick_bet_popup",
+    "value": "false",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.666902,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "sportMarketGroupMap",
+    "value": "{}",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.668408,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cookie_last_vip_tab",
+    "value": "progress",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.686153,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "locale",
+    "value": "ru",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1797360411.706567,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "mp_e29e8d653fb046aa5a7d7b151ecf6f99_mixpanel",
+    "value": "%7B%22distinct_id%22%3A%22%22%2C%22%24device_id%22%3A%228de242c2-e2ee-44a4-8638-3bd0b209137f%22%2C%22%24initial_referrer%22%3A%22https%3A%2F%2Fstake.com%2F%3F__cf_chl_tk%3DePAO3w0enJnPP89wO.DV5S.mJ4Av3GUqXfHjXC4TF2U-1762800366-1.0.1.1-iBvA2.JsV1ZIAboTE7DkkziXuTiY8GaMQ7ku.5QW7ls%22%2C%22%24initial_referring_domain%22%3A%22stake.com%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%7D",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": 1794336414,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cf_clearance",
+    "value": "5jaaijhYYWaXvOtwNjQOpKtDJ8Fo.bpcaL4RtJSEvPo-1762800416-1.2.1.1-HoBTvdMCocL6NsvHBl_u61dluYu8yhIs9VTVouXyBA8o6ZHihnU8NqFpcrTrLGbYhOLxRiGrxRnzURU4uREOhYZQ51yVzqmXEXepXJDCHHF8RlDghUe.8S3hChnfn3M91UQPAzCPrhr4bgdYApFRhhJuHZxYdX30Q9JYv1w1nRSOUjDn5JyZdylVv_JcFkB9zEKaTeHRvk.YgZ4B6WBmitPdgySPIbGxmxlroSq76uqtWsEzcDNoC.8dPVLErRKo",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": 1794336416.239497,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://stake.com",
+    "_crHasCrossSiteAncestor": false
+  },
+  {
+    "name": "g_state",
+    "value": "{\"i_l\":0,\"i_ll\":1762800418004,\"i_b\":\"TzQWUEKrgaYJX/luBsGYKFP7pDycguV25kNeFM1oK0c\"}",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1778352418,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "io_token_7c6a6574-f011-4c9a-abdd-9894a102ccef",
+    "value": "M9Rtd7RbpneynE3I6Rm+Df40yzIhbqLtHRpfrjqSXy4=",
+    "domain": "mpsnare.iesnare.com",
+    "path": "/",
+    "expires": 1794336418.391021,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None",
+    "partitionKey": "https://stake.com",
+    "_crHasCrossSiteAncestor": true
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.45390800.1762800421",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": 1797360420.670907,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga_TWGX3QNXGG",
+    "value": "GS2.1.s1762800420$o1$g0$t1762800421$j59$l0$h1051542606",
+    "domain": ".stake.com",
+    "path": "/",
+    "expires": 1797360421.930608,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_dd_s",
+    "value": "aid=fb7eb339-7650-4ddd-a2bd-787fc7b0ba43&logs=1&id=a1696f6d-541c-4f56-aa5e-8fa12b2a8df1&created=1762800411943&expire=1762801321927",
+    "domain": "stake.com",
+    "path": "/",
+    "expires": 1794336421,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Strict"
+  }
+]
