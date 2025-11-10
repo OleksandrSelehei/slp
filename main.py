@@ -157,9 +157,11 @@ async def main():
             channel='chrome',
             headless=False,
             args=[
-                '--disable-blink-features=AutomationControlled'
+                '--disable-blink-features=AutomationControlled',
+                '--window-position=-32000,-32000',
             ]) as browser: # type: Browser
             context: BrowserContext = await browser.new_context()
+
             page: Page = await context.new_page()
             await page.goto(URL)
 
@@ -190,6 +192,11 @@ async def main():
             clicked = await try_click_login_button(page)
             if not clicked:
                 logger.warning("Кнопка логина не найдена — пропускаем этот шаг.")
+                try:
+                    await page.screenshot(path="login_button_not_found.png", full_page=True)
+                    logger.info("📸 Скриншот сохранён: login_button_not_found.png")
+                except Exception as e:
+                    logger.error(f"Не удалось сделать скриншот: {e}")
                 await browser.close()
                 return
 
@@ -228,8 +235,6 @@ async def main():
                 logger.error("❌ Всё ещё не залогинен — cookies не сохранены. Смотри файлы debug для диагностики.")
 
             await browser.close()
-
-            await asyncio.Future()
 
 
 if __name__ == "__main__":
