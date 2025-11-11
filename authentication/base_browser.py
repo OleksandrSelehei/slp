@@ -107,8 +107,8 @@ class BaseBrowser:
 
             bounding_box = None
             await asyncio.sleep(10)
-            for _ in range(25):
-                await asyncio.sleep(1)
+            for _ in range(3):
+                await asyncio.sleep(3)
 
                 for frame in self.page.frames:
                     if frame.url.startswith('https://challenges.cloudflare.com'):

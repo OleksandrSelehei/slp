@@ -21,12 +21,16 @@ class AuthenticationBase(BaseBrowser, ABC):
         Browser, BrowserContext, and Page instances.
 
         Subclasses must implement this method with site-specific login logic, including:
-        1. Navigating to the login page.
-        2. Handling bot-screening / CAPTCHA challenges.
-        3. Finding login and password fields and entering credentials using human-like typing.
-        4. Submitting the login form and verifying successful login.
-        5. Saving cookies for session persistence.
-        6. Returning the initialized Browser, BrowserContext, and Page objects.
+        1. **First step**: call `await self.verify_human()` to prepare the browser,
+           context, and page, passing bot-screening challenges if any.
+        2. Finding login and password fields and entering credentials using human-like typing.
+        3. Submitting the login form and verifying successful login.
+        4. Saving cookies for session persistence.
+        5. Returning the initialized Browser, BrowserContext, and Page objects.
+
+        **Important:** The asynchronous method `verify_human` must be called at the start
+        of `login` to ensure that `self.browser`, `self.context`, and `self.page` are
+        properly initialized before performing site-specific login actions.
 
         Returns:
             Tuple[Optional[Browser], Optional[BrowserContext], Optional[Page]]:

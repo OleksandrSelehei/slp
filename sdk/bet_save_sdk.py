@@ -1,7 +1,7 @@
 # betsave_sdk/bet_save_sdk.py
 import requests
 from typing import Dict, Any, List, Optional, Union
-from logs import logger
+from logs.logs import logger
 
 
 class BetSaveSDK:
