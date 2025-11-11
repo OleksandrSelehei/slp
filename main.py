@@ -155,7 +155,7 @@ async def main():
     async with async_playwright() as playwright:
         async with await playwright.chromium.launch(
             channel='chrome',
-            headless=False,
+            headless=True,
             args=[
                 '--disable-blink-features=AutomationControlled',
                 '--window-position=-32000,-32000',
@@ -192,11 +192,6 @@ async def main():
             clicked = await try_click_login_button(page)
             if not clicked:
                 logger.warning("Кнопка логина не найдена — пропускаем этот шаг.")
-                try:
-                    await page.screenshot(path="login_button_not_found.png", full_page=True)
-                    logger.info("📸 Скриншот сохранён: login_button_not_found.png")
-                except Exception as e:
-                    logger.error(f"Не удалось сделать скриншот: {e}")
                 await browser.close()
                 return
 
