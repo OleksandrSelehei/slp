@@ -4,6 +4,9 @@ from transformers.transformer_stake import TransformerStake
 from loaders.data_loader import DataLoader
 from sdk.bet_save_sdk import BetSaveSDK
 import asyncio
+from utils.config.config import config
+from xvfbwrapper import Xvfb
+
 
 
 async def process_stake_data():
@@ -41,31 +44,32 @@ async def process_stake_data():
         - The whole workflow is async to efficiently handle browser automation and network I/O.
     """
 
-    # Step 1: Authentication
-    auth = AuthenticationStake(
-        base_url="https://stake.com",       # Test URL of Stake.com
-        email="test@example.com",           # Test email for login
-        password="password123",             # Test password
-        cookies_file="stake_cookies.json",  # File to store session cookies
-        headless=True                        # Headless browser mode for automation
-    )
+    with Xvfb(width=1920, height=1080, colordepth=24) as xvfb:
+        # Step 1: Authentication
+        auth = AuthenticationStake(
+            base_url="https://stake.com",       # Test URL of Stake.com
+            email=config.emailStake,           # Test email for login
+            password=config.passwordStake,             # Test password
+            headless=False # Headless browser mode for automation
+        )
 
-    # Step 2: Parsing
-    parser = StakeParser(auth)
-    await parser.initialize_session()  # Ensure browser session is active
-    raw_data = await parser.parse_data()  # Extract data from Stake
+        # Step 2: Parsing
+        parser = StakeParser(auth)
+        await parser.initialize_session()  # Ensure browser session is active
+        raw_data = await parser.parse_data()  # Extract data from Stake
 
-    # Step 3: Transformation
-    transformer = TransformerStake()
-    standardized_data = await transformer.transform(raw_data)  # Validate, calculate, standardize
+        # Step 3: Transformation
+        transformer = TransformerStake()
+        standardized_data = await transformer.transform(raw_data)  # Validate, calculate, standardize
 
-    # Step 4: Data Loading
-    sdk = BetSaveSDK(token="", base_url="")  # Initialize BetSave SDK with test token and URL
-    loader = DataLoader(sdk)
-    response = await loader.send(standardized_data)  # Send data to BetSave
-
-    # Log or print the response for debugging
-    print("DataLoader response:", response)
+        # ============================================ ================================================== #
+        # Step 4: Data Loading
+        # sdk = BetSaveSDK(token=config.tokenAPI, base_url=config.baseUrlApi)  # Initialize BetSave SDK with test token and URL
+        # loader = DataLoader(sdk)
+        # response = await loader.send(standardized_data)  # Send data to BetSave
+        #
+        # # Log or print the response for debugging
+        # print("DataLoader response:", response)
 
 
 def run_process_stake_data():

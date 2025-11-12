@@ -3,8 +3,9 @@ import json
 import asyncio
 import random
 from typing import Optional, Tuple
-from patchright.async_api import async_playwright, Browser, BrowserContext, Page, ElementHandle
-from logs.logs import logger
+from urllib.parse import urlparse
+from patchright.async_api import async_playwright, Browser, BrowserContext, Page, ElementHandle, Locator
+from utils.logs.logs import logger
 
 
 class BaseBrowser:
@@ -24,15 +25,19 @@ class BaseBrowser:
             page (Optional[Page]): Page instance for automation tasks.
         """
 
-    def __init__(self, base_url: str, email: str, password: str, cookies_file: str, headless: bool = True) -> None:
+    def __init__(self, base_url: str, email: str, password: str, cookies_file: str = "cookies.json", headless: bool = False, proxy: Optional[str] = None,) -> None:
         self.email: str = email
         self.password: str = password
         self.headless: bool = headless
         self.browser: Optional[Browser] = None
         self.context: Optional[BrowserContext] = None
         self.page: Optional[Page] = None
+        self.proxy = proxy
+
         self.cookies_file = cookies_file
         self.base_url = base_url
+        self.page: Optional[Page] = None
+
 
     async def save_cookies(self) -> None:
         """
@@ -52,7 +57,7 @@ class BaseBrowser:
             logger.exception("❌ Error saving cookies: {}", e)
 
     @staticmethod
-    async def human_type(element: ElementHandle, text: str, min_delay: float = 0.03, max_delay: float = 0.12) -> None:
+    async def human_type(element: Locator, text: str, min_delay: float = 0.03, max_delay: float = 0.12) -> None:
         """
         Types text into an input element simulating human behavior.
 
@@ -96,18 +101,32 @@ class BaseBrowser:
         """
         try:
             playwright = await async_playwright().start()
-            self.browser = await playwright.chromium.launch(
-                channel='chrome',
-                headless=self.headless,
-                args=['--disable-blink-features=AutomationControlled']
-            )
+            launch_options = {
+                "channel": "chrome",
+                "headless": self.headless,
+                "args": ["--disable-blink-features=AutomationControlled"],
+            }
+
+            if self.proxy:
+                parsed = urlparse(self.proxy)
+                proxy_dict = {"server": f"{parsed.scheme}://{parsed.hostname}:{parsed.port}"}
+                if parsed.username and parsed.password:
+                    proxy_dict["username"] = parsed.username
+                    proxy_dict["password"] = parsed.password
+                    logger.info("🔐 Using authenticated proxy {}://{}:***", parsed.scheme, parsed.hostname)
+                else:
+                    logger.info("🌍 Using proxy {}://{}:{}", parsed.scheme, parsed.hostname, parsed.port)
+            else:
+                logger.info("🚫 No proxy provided — launching browser directly")
+
+            self.browser = await playwright.chromium.launch(**launch_options)
             self.context = await self.browser.new_context()
             self.page = await self.context.new_page()
             await self.page.goto(self.base_url)
 
             bounding_box = None
             await asyncio.sleep(10)
-            for _ in range(3):
+            for _ in range(5):
                 await asyncio.sleep(3)
 
                 for frame in self.page.frames:

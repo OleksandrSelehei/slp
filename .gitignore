@@ -1,0 +1,6 @@
+/.venv
+.env
+/.idea
+/credentials
+zametki.txt
+__pycache__

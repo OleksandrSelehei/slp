@@ -1,6 +1,7 @@
+from http.client import responses
 from typing import Union, List
-from logs.logs import logger
-from models.bet_save import BetSaveStandard, BetSaveStandardItem
+from utils.logs.logs import logger
+from models.bet_save import BetSaveStandard
 from sdk.bet_save_sdk import BetSaveSDK
 
 
@@ -42,9 +43,13 @@ class DataLoader:
             # Sending multiple entries
             payload: List[dict] = [item.model_dump() for item in data.items]
             logger.debug("DataLoader: Payload for bulk request: %s", payload)
-            response = self.sdk.bulk_wager(payload)
-            logger.info("DataLoader: Bulk request completed with %d entries", len(payload))
-            return response
+            response = self.sdk.bulk_registration(payload)
+            if response:
+                response = self.sdk.bulk_wager(payload)
+                logger.info("DataLoader: Bulk request completed with %d entries", len(payload))
+                return response
+            else:
+                return []
         else:
             # Sending a single entry
             payload: dict = data.item.model_dump()

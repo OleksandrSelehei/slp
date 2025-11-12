@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Union
-from logs.logs import logger
+from utils.logs.logs import logger
 from models.bet_save import BetSaveStandard
 
 

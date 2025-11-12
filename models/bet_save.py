@@ -1,15 +1,15 @@
 from typing import List, Optional, Union
 from pydantic import BaseModel, root_validator, Field
+from utils.config.config import config
 
 
 class BetSaveStandardItem(BaseModel):
-    # TODO: Define fields for a single bet record
+
     subid: str  # Internal user or campaign identifier
-    partner_id: str  # Unique partner ID assigned by BetSave
-    clickid: str  # Identifier used for attribution tracking
+    partner_id: str = config.PARTNER_ID  # Unique partner ID assigned by BetSave
+    clickid: str = config.CLICKID # Identifier used for attribution tracking
     player_id: Optional[str] = None  # Optional external player identifier
     amount: Optional[float] = None  # Optional field for wager amount
-    # Add any additional fields required by the API
 
 
 class BetSaveStandard(BaseModel):
@@ -24,27 +24,6 @@ class BetSaveStandard(BaseModel):
     multiple: bool = Field(default=False, description="True if sending multiple records")
     item: Optional[BetSaveStandardItem] = None
     items: Optional[List[BetSaveStandardItem]] = None
-
-    @root_validator
-    def check_items_consistency(cls, values):
-        multiple = values.get('multiple', False)
-        item = values.get('item')
-        items = values.get('items')
-
-        if multiple:
-            # If multiple=True, `items` must be a non-empty list, `item` must be None
-            if not items or not isinstance(items, list):
-                raise ValueError("For multiple=True, 'items' must be a non-empty list")
-            if item is not None:
-                raise ValueError("For multiple=True, 'item' must be None")
-        else:
-            # If multiple=False, `item` must be provided, `items` must be None
-            if item is None:
-                raise ValueError("For multiple=False, 'item' must be provided")
-            if items is not None:
-                raise ValueError("For multiple=False, 'items' must be None")
-
-        return values
 
     def get_payload(self) -> Union[dict, List[dict]]:
         """
